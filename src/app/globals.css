@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --navbar-hover:rgba(96,96,96,0.32);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,9 +66,13 @@ body {
 .main-navbar {
   position: fixed;
   width: 250px;
-  padding-top: 15vh;
-  padding-bottom: 45vh;
+  padding-bottom: 65vh;
   height: 100%;
+}
+
+.navbar-active {
+  background-color: rgba(96,96,96,0.32);
+  color: white !important;
 }
 
 div.main-navbar ul{
@@ -123,3 +128,4 @@ div.main-navbar ul{
   left: 50%; /* Posisikan di tengah secara horizontal */
   transform: translateX(-50%);
 }
+

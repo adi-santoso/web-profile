@@ -1,16 +1,13 @@
 'use client'
 import {useState} from 'react';
 import AnimatedCursor from "react-animated-cursor";
-import {Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
-import InboxIcon from '@mui/icons-material/Inbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import {AccountCircle, ContactPage, ContactPhone, FolderSpecial, Home} from "@mui/icons-material";
-import ScrollAnimation from "react-animate-on-scroll";
+import {AccountCircle, ContactPhone, FolderSpecial, Home} from "@mui/icons-material";
 import "animate.css/animate.compat.css"
 import HomePage from "@/app/(page)/home";
 import About from "@/app/(page)/about";
 import Project from "@/app/(page)/project";
 import Contact from "@/app/(page)/contact";
+import Image from "next/image";
 
 export default function Page() {
     const colors = [
@@ -47,12 +44,13 @@ export default function Page() {
             changeActiveNavbar(currentScroll)
         }
     }
+    const navBarActiveColor = "rgb(255,255,255)";
 
     const navigation = [
-        { name: 'Home', href: '#home', color: activeNavbarIndex==0 ? "#1976d2" : "", icon: <Home sx={{ fontSize: 40 }} color={activeNavbarIndex==0 ? "primary" : undefined} className="me-2"/> },
-        { name: 'About Me', href: '#about', color: activeNavbarIndex==1 ? "#1976d2" : "", icon: <AccountCircle sx={{ fontSize: 40 }} color={activeNavbarIndex==1 ? "primary" : undefined}  className="me-2"/> },
-        { name: 'Projects', href: '#project', color: activeNavbarIndex==2 ? "#1976d2" : "", icon: <FolderSpecial sx={{ fontSize: 40 }}  color={activeNavbarIndex==2 ? "primary" : undefined} className="me-2"/> },
-        { name: 'Contact', href: '#contact', color: activeNavbarIndex==3 ? "#1976d2" : "", icon: <ContactPhone sx={{ fontSize: 40 }} color={activeNavbarIndex==3 ? "primary" : undefined}  className="me-2"/> },
+        { name: 'Home', href: '#home', color: activeNavbarIndex==0 ? navBarActiveColor : "", icon: <Home sx={{ fontSize: 40 }} color={activeNavbarIndex==0 ? "inherit" : undefined} className="me-2"/> },
+        { name: 'About Me', href: '#about', color: activeNavbarIndex==1 ? navBarActiveColor : "", icon: <AccountCircle sx={{ fontSize: 40 }} color={activeNavbarIndex==1 ? "inherit" : undefined}  className="me-2"/> },
+        { name: 'Projects', href: '#project', color: activeNavbarIndex==2 ? navBarActiveColor : "", icon: <FolderSpecial sx={{ fontSize: 40 }}  color={activeNavbarIndex==2 ? "inherit" : undefined} className="me-2"/> },
+        { name: 'Contact', href: '#contact', color: activeNavbarIndex==3 ? navBarActiveColor : "", icon: <ContactPhone sx={{ fontSize: 40 }} color={activeNavbarIndex==3 ? "inherit" : undefined}  className="me-2"/> },
     ]
 
     function classNames(...classes: string[]) {
@@ -66,6 +64,9 @@ export default function Page() {
         <div id="mainContainer" className="main-container" onScroll={navbarHandler}>
 
             <div className="main-navbar">
+                <div className="" style={{backgroundColor:'rgba(96,96,96,0.32)'}}>
+                    <Image src='/brand_me_white.png' className="mx-auto" width={150} height={150} alt={'brand'}></Image>
+                </div>
                 <ul className="">
                     {navigation.map((item, index) => (
                         <li key={item.name} className="p-5 w-full inline-block">
@@ -73,7 +74,7 @@ export default function Page() {
                                 key={item.name}
                                 href={item.href}
                                 className={classNames(
-                                    activeNavbarIndex == index ? 'bg-gray-900 text-white w-f' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        activeNavbarIndex == index ? 'navbar-active' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                     'rounded-md px-3 py-2 text-sm font-medium p-5 w-full block float-left'
                                 )}
                                 aria-current={activeNavbarIndex == index ? 'page' : undefined}

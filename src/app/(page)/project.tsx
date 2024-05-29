@@ -47,13 +47,13 @@ export default function Project() {
                         >
                             <div className="mb-5 ps-20">
                                 <h1 style={{fontSize: '30px', textTransform: 'uppercase'}}>
-                                    <b>POS TANJIDOR (POINT OF SALE)</b>
+                                    <b>MY HOME CLUB (GOLF BOOKING APP)</b>
                                 </h1>
                                 <div id="rectangle"
                                      style={{backgroundColor: "#5364FF", width: '100%', height: '5px'}}></div>
                             </div>
                             <p className={'text-xl'}>
-                                A special application on request from Jababeka Golf Cikarang that makes it easier for users to make cashless tee time and driving range bookings at golf courses. Consists of 4 Applications : Backend (Laravel), Front End (Laravel for WCP, Flutter for staff and player). available on Android and IOS platforms and has been downloaded by more than 200people.
+                                A special application on request from Jababeka Golf Cikarang that makes it easier for users to make cashless tee time and driving range bookings at golf courses. Consists of 4 Applications : Backend (Laravel), Front End (Laravel for WCP, Flutter for staff and player). available on Android and IOS platforms and has been downloaded by more than 2000+ people.
                             </p>
                         </div>
                     </td>
