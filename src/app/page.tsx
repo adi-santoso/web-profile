@@ -13,7 +13,7 @@ export default function Page() {
 
 
     const [activeNavbarIndex, changeActiveNavbar] = useState(0);
-    const [hoverNavbarIndex, changeHoverActiveNavbar] = useState(0);
+    const [hoverNavbarIndex, changeHoverActiveNavbar] = useState(-1);
 
     const navbarHandler = (e: any) =>
     {
