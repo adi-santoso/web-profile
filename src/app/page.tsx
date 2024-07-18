@@ -2,12 +2,14 @@
 import {useState} from 'react';
 import AnimatedCursor from "react-animated-cursor";
 import {AccountCircle, ContactPhone, FolderSpecial, Home} from "@mui/icons-material";
-import "animate.css/animate.compat.css"
 import HomePage from "@/app/(page)/home";
 import About from "@/app/(page)/about";
 import Project from "@/app/(page)/project";
 import Contact from "@/app/(page)/contact";
 import Image from "next/image";
+import "animate.css/animate.compat.css";
+import ScrollAnimation from 'react-animate-on-scroll';
+import Myhomeclub from "@/app/(page)/myhomeclub";
 
 export default function Page() {
 
@@ -19,6 +21,7 @@ export default function Page() {
     {
         const { scrollTop } = e.target;
         var currentScroll = Math.round(scrollTop/961);
+        console.log('scroll');
         if(activeNavbarIndex!=currentScroll){
             changeActiveNavbar(currentScroll)
         }
@@ -47,40 +50,38 @@ export default function Page() {
         return classes.filter(Boolean).join(' ')
     }
 
-
-
-
     return (
         <div id="mainContainer" className="main-container" onScroll={navbarHandler}>
-
             <div className="main-navbar">
-                <div className="" style={{backgroundColor:'rgba(96,96,96,0.32)'}}>
+                <div className="" style={{backgroundColor: 'rgba(96,96,96,0.32)'}}>
                     <Image src='/brand_me_white.png' className="mx-auto" width={150} height={150} alt={'brand'}></Image>
                 </div>
                 <ul className="p-5">
                     {navigation.map((item, index) => (
-                        <li key={item.name} className="w-full inline-block" onMouseEnter={navbarMouseInHandler} onMouseLeave={navbarMouseLeaveHandler}>
+                        <li key={item.name} className="w-full inline-block" onMouseEnter={navbarMouseInHandler}
+                            onMouseLeave={navbarMouseLeaveHandler}>
                             <a
 
                                 key={item.name}
                                 href={item.href}
                                 className={classNames(
-                                        activeNavbarIndex == index || hoverNavbarIndex == index ? 'navbar-active' : 'navbar-inactive',
+                                    activeNavbarIndex == index || hoverNavbarIndex == index ? 'navbar-active' : 'navbar-inactive',
                                     'navbar'
                                 )}
                                 aria-current={activeNavbarIndex == index || hoverNavbarIndex == index ? 'page' : undefined}
                             >
-                                <div className={'flex'} style={{height:'60px'}}>
+                                <div className={'flex'} style={{height: '60px'}}>
                                     <div
                                         data-index={index}
                                         className={classNames(
-                                        activeNavbarIndex == index || hoverNavbarIndex == index ? 'navbar-icon-active' : 'navbar-icon-inactive',
-                                        'place-content-center text-center'
-                                    )} style={{width:'60px'}}>
+                                            activeNavbarIndex == index || hoverNavbarIndex == index ? 'navbar-icon-active' : 'navbar-icon-inactive',
+                                            'place-content-center text-center'
+                                        )} style={{width: '60px'}}>
                                         {item.icon}
                                     </div>
                                     <div data-index={index} className={'flex-grow place-content-center'}>
-                                    <span data-index={index} className={'uppercase font-extrabold ms-2'} style={{color: item.color}}>
+                                    <span data-index={index} className={'uppercase font-extrabold ms-2'}
+                                          style={{color: item.color}}>
                                     {item.name}
                                 </span>
                                     </div>
@@ -91,6 +92,8 @@ export default function Page() {
                     ))}
                 </ul>
             </div>
+
+
             <div id="subContainer" className="container-xl main">
                 <AnimatedCursor
                     color="119, 225,109"
@@ -105,15 +108,25 @@ export default function Page() {
                 </section>
 
                 <section id={'about'} className="h-screen">
-                    <About/>
+                    <ScrollAnimation animateIn="fadeIn" scrollableParentSelector='#mainContainer'>
+                        <About/>
+                    </ScrollAnimation>
                 </section>
 
                 <section id={'project'} className="h-screen">
-                    <Project/>
+                    <ScrollAnimation animateIn="fadeIn" scrollableParentSelector='#mainContainer'>
+                        <Project/>
+                    </ScrollAnimation>
+                </section>
+
+                <section id={'project'} className="h-screen">
+                    <Myhomeclub/>
                 </section>
 
                 <section id={'contact'} className="h-screen section">
-                    <Contact/>
+                    <ScrollAnimation animateIn="fadeIn" scrollableParentSelector='#mainContainer'>
+                        <Contact/>
+                    </ScrollAnimation>
                 </section>
             </div>
         </div>

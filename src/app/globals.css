@@ -1,3 +1,6 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -54,9 +57,25 @@ body {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  overflow: auto;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+html:focus-within {
   scroll-behavior: smooth;
 }
+
+.disable-scrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.disable-scrollbars::-webkit-scrollbar {
+  background: transparent; /* Chrome/Safari/Webkit */
+  width: 0px;
+}
+
+
 
 .main{
   padding-left: 250px;
